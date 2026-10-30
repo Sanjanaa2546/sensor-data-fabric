@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+*.egg-info/
+.pytest_cache/
+
+# DuckDB runtime artifacts
+*.duckdb
+*.duckdb.wal
+
+# Environment variables
+.env
+
+# Node & Frontend
+node_modules/
+.npm
+frontend/dist/
+frontend/.vite/
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

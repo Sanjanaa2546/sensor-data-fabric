@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  aero-fabric:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aerofabric-sensor-data-fabric
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=production
+      - DUCKDB_PATH=/app/data/sensor_fabric.duckdb
+      - MAX_ROW_LIMIT=1000
+      - DEFAULT_ROW_LIMIT=100
+      - QUERY_TIMEOUT_SECONDS=3.0
+      # Optional: Add external LLM API key
+      # - GEMINI_API_KEY=${GEMINI_API_KEY}
+      # - OPENAI_API_KEY=${OPENAI_API_KEY}
+      # - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    volumes:
+      - duckdb_data:/app/data
+    restart: unless-stopped
+
+volumes:
+  duckdb_data:
